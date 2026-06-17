@@ -1,18 +1,48 @@
-from google import genai
 import streamlit as st
-api_key=st.secrets["AQ.Ab8RN6IOInd9SJOhdhUwuEcm0ZzQv5bxCLIKvn6bdx1Mia2eVQ"]
+from google import genai
 
+# Get API Key from Streamlit Secrets
+api_key = st.secrets["AQ.Ab8RN6IOInd9SJOhdhUwuEcm0ZzQv5bxCLIKvn6bdx1Mia2eVQ"]
+
+# Initialize Gemini Client
 client = genai.Client(api_key=api_key)
 
-while True:
-    text = input("You: ")
+# Page Title
+st.title("🤖 Gemini AI Chatbot")
 
-    if text.lower() == "bye":
-        break
+# Chat History
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=text
-    )
+# Display old messages
+for role, msg in st.session_state.messages:
+    with st.chat_message(role):
+        st.write(msg)
 
-    print("Chatbot:", response.text)
+# User Input
+prompt = st.chat_input("Type your message...")
+
+if prompt:
+
+    # Show user message
+    st.session_state.messages.append(("user", prompt))
+
+    with st.chat_message("user"):
+        st.write(prompt)
+
+    # Generate response
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
+
+        bot_reply = response.text
+
+        st.session_state.messages.append(("assistant", bot_reply))
+
+        with st.chat_message("assistant"):
+            st.write(bot_reply)
+
+    except Exception as e:
+        st.error(f"Error: {e}")
