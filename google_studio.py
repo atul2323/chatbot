@@ -1,6 +1,6 @@
 from google import genai
 import streamlit as st
-api=st.secrets("AQ.Ab8RN6IOInd9SJOhdhUwuEcm0ZzQv5bxCLIKvn6bdx1Mia2eVQ")
+api=st.secrets["AQ.Ab8RN6IOInd9SJOhdhUwuEcm0ZzQv5bxCLIKvn6bdx1Mia2eVQ"]
 
 client = genai.Client(api)
 
