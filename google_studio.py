@@ -2,7 +2,7 @@ import streamlit as st
 from google import genai
 
 # Get API Key from Streamlit Secrets
-api_key = "AQ.Ab8RN6IqLXs494hF1MmJRA07_FCRH3ZTbFDPqyPHmDy1YfBmHw"
+api_key = "AQ.Ab8RN6JxvRwQYzPl1VmWaU7_ICieiiAsyhfW9dH08lUClUZyZg"
 
 # Initialize Gemini Client
 client = genai.Client(api_key=api_key)
