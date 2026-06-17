@@ -1,7 +1,7 @@
 from google import genai
 
 
-client = genai.Client(api_key="AQ.Ab8RN6LG_Yzqa2NCoPD-M8T8ml_Yu1ZzWT1pVXfPphR85gnGow")
+client = genai.Client(api_key="AQ.Ab8RN6Jlzc8UZ_qyh_5jm9An9C2JE3BNa1T7iH-DcwiolOYLfA")
 
 while True:
     text = input("You: ")
