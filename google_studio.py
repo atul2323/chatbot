@@ -1,7 +1,8 @@
 from google import genai
+import streamlit as st
+api=st.secrets("AQ.Ab8RN6IOInd9SJOhdhUwuEcm0ZzQv5bxCLIKvn6bdx1Mia2eVQ")
 
-
-client = genai.Client(api_key="AQ.Ab8RN6Jlzc8UZ_qyh_5jm9An9C2JE3BNa1T7iH-DcwiolOYLfA")
+client = genai.Client(api)
 
 while True:
     text = input("You: ")
