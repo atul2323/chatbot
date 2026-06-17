@@ -2,7 +2,7 @@ from google import genai
 import streamlit as st
 api=st.secrets["AQ.Ab8RN6IOInd9SJOhdhUwuEcm0ZzQv5bxCLIKvn6bdx1Mia2eVQ"]
 
-client = genai.Client(api)
+client = genai.Client(api_key=api)
 
 while True:
     text = input("You: ")
