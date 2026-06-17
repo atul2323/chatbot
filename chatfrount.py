@@ -1,15 +1,15 @@
 import streamlit as st
 from google_studio import get_response
 
-st.title("🤖 AI Chatbot")
+st.title("🤖 Gemini AI Chatbot")
 
-user_input = st.text_input("Enter your message")
+prompt = st.chat_input("Type your message...")
 
-if st.button("Send"):
+if prompt:
+    with st.chat_message("user"):
+        st.write(prompt)
 
-    if user_input:
+    response = get_response(prompt)
 
-        response = get_response(user_input)
-
-        st.write("### Bot:")
+    with st.chat_message("assistant"):
         st.write(response)
