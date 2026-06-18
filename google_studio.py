@@ -4,14 +4,14 @@ import os
 
 import streamlit as st
 
-
-api_key = st.secrets["GEMINI_API_KEY"]
+load_dotenv(override=True)
+api_key = os.getenv('GEMINI_API_KEY')
 
 client = genai.Client(api_key=api_key)
 
 def get_response(prompt):
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-2.5-flash",
         contents=prompt
     )
     return response.text
