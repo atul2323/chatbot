@@ -1,13 +1,17 @@
-import os
 from google import genai
+from dotenv import load_dotenv
+import os
+import streamlit as st
 
-# The SDK automatically detects the "GEMINI_API_KEY" environment variable.
-# No need to manually pass it if it is correctly set in your environment.
-client = genai.Client() 
+load_dotenv(override=True)
 
-def get_response(prompt):                                                
-    response = client.models.generate_content(                           
-        model="gemini-2.5-flash",                                        
-        contents=prompt                                                  
+api_key = os.getenv("GEMINI_API_KEY")
+
+client = genai.Client(api_key=api_key)
+
+def get_response(prompt):
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
     )
     return response.text
