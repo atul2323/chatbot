@@ -6,7 +6,7 @@ import streamlit as st
 load_dotenv(override=True)
 
 api_key = os.getenv("GEMINI_API_KEY")
-
+print(api_key)
 client = genai.Client(api_key=api_key)
 
 def get_response(prompt):
@@ -15,3 +15,4 @@ def get_response(prompt):
         contents=prompt
     )
     return response.text
+    
