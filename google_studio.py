@@ -1,9 +1,8 @@
 import os
-import json
 import sys
 import subprocess
 
-# Automatically install the correct package inside Streamlit's environment if missing
+# Automatically handle package installation in the cloud environment
 try:
     import google.genai as genai
     from google.genai import types
@@ -14,20 +13,19 @@ except ModuleNotFoundError:
 
 import streamlit as st
 
-working_dir=os.path.dirname(os.path.abspath(__file__))
-config_data=json.load(open(f"{working_dir}/config.json"))
-GEMINI_API_KEY=config_data["GEMINI_API_KEY"]
+# 💡 CORRECTION: Bypassed config.json entirely to read from Streamlit's secure Advanced Settings
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 
 #streamlib
 
-st.set_page_config(page_title="Flash 2.5",page_icon="💬",layout="centered")
+st.set_page_config(page_title="Flash 2.5",page_icon="....",layout="centered")
 if "chat_history" not in st.session_state:
     st.session_state.chat_history=[]
 
-st.title("GEMINI 🤖")
+st.title("GEMINI")
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
