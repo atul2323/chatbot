@@ -21,7 +21,7 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 
 #streamlib
 
-st.set_page_config(page_title="Flash 2.5",page_icon="....",layout="centered")
+st.set_page_config(page_title="master ji",page_icon="....",layout="centered")
 if "chat_history" not in st.session_state:
     st.session_state.chat_history=[]
 
